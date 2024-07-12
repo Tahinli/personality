@@ -5,8 +5,10 @@ use tracing::Level;
 enum Route {
     #[route("/")]
     Home {},
+    #[route("/projects/")]
+    Projects {},
     #[route("/projects/:id")]
-    Project {id: i32},
+    Project { id: i32 },
 }
 
 fn main() {
@@ -22,6 +24,13 @@ fn app() -> Element {
 }
 
 #[component]
+fn Projects() -> Element {
+    rsx! {
+        Link {to: Route::Project { id: 1 }, "Radioxide"}
+    }
+}
+
+#[component]
 fn Blog(id: i32) -> Element {
     rsx! {
         Link { to: Route::Home {}, "Go to home" }
@@ -32,13 +41,19 @@ fn Project(id: i32) -> Element {
     let x = match id {
         1 => {
             rsx! {
-                h1 {"this is radioxide"}
+                h1 {"Radioxide"}
+                h5 {"Online radio written in Rust."}
+                div {
+                "In this project any streamer can do their radio stream.
+                Streamer is able to stream audio input and also sound files. 
+                Multiple clients are able to listen streamer. 
+                Relay server connects streamer to worldwide listeners."
+                }
             }
-            
-        },
+        }
         _ => {
             rsx! {
-                h1 {"this is not"}
+                h1 {"You're not suppose to be here"}
             }
         }
     };
@@ -51,10 +66,22 @@ fn Project(id: i32) -> Element {
 #[component]
 fn Home() -> Element {
     rsx! {
-        header{"Home, Projects"}
+        nav {
+            Link {to: Route::Home{}, class:"nav-btn", "Home"}
+            Link {to: Route::Projects{}, class:"nav-btn", "Projects"}
+        }
+        div { id: "content",
+            Outlet::<Route> {}
+        }
         div {
             h1 {"Ahmet Kaan Gümüş"}
             h4 {"System && Backend Developer"}
+            h5 {
+                Link {to: "https://github.com/tahinli", "GitHub"}
+            }
+            h5 {
+                Link {to: "https://linkedin.com/in/ahmetkaangumus", "LinkedIn"}
+            }
             div {
                 "
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consectetur lorem in augue gravida, eget tempus odio consectetur. Vestibulum ut pretium nibh. Praesent id eros id nunc dapibus rutrum. Suspendisse bibendum lacus in massa lobortis, a egestas lectus ullamcorper. Phasellus dignissim augue ac ultricies gravida. Pellentesque bibendum dapibus augue dictum porta. Donec laoreet fermentum dui, non suscipit ante. Nulla ac risus semper, mollis metus vitae, viverra justo. Phasellus ornare diam mi, sed pellentesque est porttitor eget. Proin quis semper mauris, ut maximus est. Vivamus id libero et sapien ullamcorper condimentum. Duis semper elit nibh, ut mattis est auctor nec. Proin porttitor elit arcu, at lobortis nulla lobortis nec. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ligula est, placerat sed felis sit amet, placerat dapibus justo. Duis ac congue purus.
@@ -68,13 +95,8 @@ Donec sit amet sem ac justo ultrices commodo. Vivamus vel tellus aliquam, interd
 Sed ut risus ac erat finibus pretium. Nunc tincidunt porttitor leo ac porttitor. Vivamus ut ultricies purus, elementum feugiat tellus. Mauris at sapien semper, vestibulum risus eget, blandit dolor. Nulla facilisi. Proin faucibus interdum eleifend. Curabitur dictum diam at purus luctus facilisis. Aenean et ligula sapien. Suspendisse non nisl purus. "
             }
         }
-        h2 {"Projects"}
-        Link {
-            to: Route::Project {
-                id: 0
-            },
-            "Radioxide"
-        }
-        footer{"Developed by Tahinli"}
+        footer{h4 {
+            "Developed by Tahinli with no Frontend Skills"
+        }}
     }
 }
