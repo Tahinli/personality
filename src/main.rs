@@ -53,7 +53,7 @@ fn Project(id: i32) -> Element {
         }
         _ => {
             rsx! {
-                h1 {"You're not suppose to be here"}
+                h1 {"You're not supposed to be here"}
             }
         }
     };
