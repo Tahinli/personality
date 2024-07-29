@@ -1,5 +1,29 @@
-body {
-    background-color: #111216;
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+}
+
+.project{
+    h1 {
+        color: red;
+    }
+    div {
+        margin-right:50%;
+    }
+}
+
+.main-nav-btn {
+    align-self: center;
+    padding: 5%;
+    display: inline;
+}
+
+nav {
+    display: inline-block;
+    padding: 1%;
 }
 
 #main {
@@ -31,7 +55,7 @@ body {
 }
 
 #links a:hover {
-    background-color: #1f1f1f;
+    background-color: #ffffff;
     cursor: pointer;
 }
 

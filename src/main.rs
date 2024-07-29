@@ -19,6 +19,10 @@ fn main() {
 
 fn app() -> Element {
     rsx! {
+        link {
+            rel: "stylesheet",
+            style { {include_str!("../assets/main.css")} },
+        }
         Router::<Route> {}
     }
 }
@@ -41,13 +45,16 @@ fn Project(id: i32) -> Element {
     let x = match id {
         1 => {
             rsx! {
-                h1 {"Radioxide"}
-                h5 {"Online radio written in Rust."}
                 div {
-                "In this project any streamer can do their radio stream.
-                Streamer is able to stream audio input and also sound files. 
-                Multiple clients are able to listen streamer. 
-                Relay server connects streamer to worldwide listeners."
+                    class:"project",
+                    h1 {"Radioxide"}
+                    h5 {"Online radio written in Rust."}
+                    div {
+                    "In this project any streamer can do their radio stream.
+                    Streamer is able to stream audio input and also sound files. 
+                    Multiple clients are able to listen streamer. 
+                    Relay server connects streamer to worldwide listeners."
+                    }
                 }
             }
         }
@@ -67,8 +74,9 @@ fn Project(id: i32) -> Element {
 fn Home() -> Element {
     rsx! {
         nav {
-            Link {to: Route::Home{}, class:"nav-btn", "Home"}
-            Link {to: Route::Projects{}, class:"nav-btn", "Projects"}
+            class: "main-nav",
+            Link {to: Route::Home{}, class:"main-nav-btn", "Home"}
+            Link {to: Route::Projects{}, class:"main-nav-btn", "Projects"}
         }
         div { id: "content",
             Outlet::<Route> {}
