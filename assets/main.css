@@ -1,64 +1,72 @@
 * {
     box-sizing: border-box;
-}
-
-html, body {
     margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .project{
     h1 {
         color: red;
     }
-    div {
-        margin-right:50%;
-    }
 }
 
 .main-nav-btn {
-    align-self: center;
+    text-decoration:overline silver;
+    color: orange;
+    font-size: xx-large;
     padding: 5%;
-    display: inline;
 }
 
-nav {
+.main-nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.main-nav {
     display: inline-block;
-    padding: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-blend-mode: multiply;
 }
 
-#main {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+.main-header {
+    background-size: cover;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    margin-bottom: 1% black;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
-#links {
-    width: 400px;
-    text-align: left;
-    font-size: x-large;
+#name {
     color: white;
-    display: flex;
-    flex-direction: column;
 }
 
-#links a {
-    color: white;
-    text-decoration: none;
-    margin-top: 20px;
-    margin: 10px;
-    border: white 1px solid;
-    border-radius: 5px;
-    padding: 10px;
+#title {
+    color:aqua;
+    margin: 1%;
 }
 
-#links a:hover {
-    background-color: #ffffff;
-    cursor: pointer;
+#github {
+    margin: 5%;
+    color: brown;
+    font-size: large;
+    font-weight: bold;
 }
 
-#header {
-    max-width: 1200px;
+#linkedin {
+    margin: 5%;
+    color:cornflowerblue;
+    font-size: large;
+    font-weight: bold;
+}
+
+#social_links {
+    display: inline-block;
+    margin: 1%;
+}
+
+.main {
+    background-color: rgba(0, 0, 0, 0.85)
+}
+
+.main div {
+    color: silver;
 }
