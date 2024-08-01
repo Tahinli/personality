@@ -6,8 +6,13 @@
 
 .project{
     h1 {
-        color: red;
+        color: azure;
     }
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: silver;
 }
 
 .main-nav-btn {
@@ -28,7 +33,7 @@
     background-blend-mode: multiply;
 }
 
-.main-header {
+header {
     background-size: cover;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     margin-bottom: 1% black;
@@ -63,10 +68,13 @@
     margin: 1%;
 }
 
-.main {
-    background-color: rgba(0, 0, 0, 0.85)
-}
-
 .main div {
     color: silver;
+}
+
+footer {
+    color: burlywood;
+    bottom: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.9);
 }

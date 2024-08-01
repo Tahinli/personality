@@ -30,14 +30,9 @@ fn app() -> Element {
 #[component]
 fn Projects() -> Element {
     rsx! {
+        Header {}
         Link {to: Route::Project { id: 1 }, "Radioxide"}
-    }
-}
-
-#[component]
-fn Blog(id: i32) -> Element {
-    rsx! {
-        Link { to: Route::Home {}, "Go to home" }
+        Footer {}
     }
 }
 #[component]
@@ -45,6 +40,7 @@ fn Project(id: i32) -> Element {
     let x = match id {
         1 => {
             rsx! {
+                Header {}
                 div {
                     class:"project",
                     h1 {"Radioxide"}
@@ -55,6 +51,7 @@ fn Project(id: i32) -> Element {
                     Multiple clients are able to listen streamer. 
                     Relay server connects streamer to worldwide listeners."
                     }
+                    Footer {}
                 }
             }
         }
@@ -65,22 +62,40 @@ fn Project(id: i32) -> Element {
         }
     };
     rsx! {
-        Link {to: Route::Home {}, "Go to home"}
         {x}
     }
 }
 
+
 #[component]
-fn Home() -> Element {
-    rsx! {
+fn Header() -> Element {
+    rsx!{
         header {
-            class: "main-header",
                 nav {
                     class: "main-nav",
                     Link {to: Route::Home{}, class:"main-nav-btn", "Home"}
                     Link {to: Route::Projects{}, class:"main-nav-btn", "Projects"}
             }
         }
+        div { id: "content",
+            Outlet::<Route> {}
+        }
+    }
+}
+
+#[component]
+fn Footer() -> Element {
+    rsx! {
+        footer{h4 {
+            "Developed by Tahinli with no Frontend Skills"
+        }}
+    }
+}
+
+#[component]
+fn Home() -> Element {
+    rsx! {
+        Header {}
         div { id: "content",
             Outlet::<Route> {}
         }
@@ -113,8 +128,6 @@ Donec sit amet sem ac justo ultrices commodo. Vivamus vel tellus aliquam, interd
 Sed ut risus ac erat finibus pretium. Nunc tincidunt porttitor leo ac porttitor. Vivamus ut ultricies purus, elementum feugiat tellus. Mauris at sapien semper, vestibulum risus eget, blandit dolor. Nulla facilisi. Proin faucibus interdum eleifend. Curabitur dictum diam at purus luctus facilisis. Aenean et ligula sapien. Suspendisse non nisl purus. "
             }
         }
-        footer{h4 {
-            "Developed by Tahinli with no Frontend Skills"
-        }}
+        Footer {}
     }
 }
