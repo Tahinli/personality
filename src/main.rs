@@ -31,7 +31,11 @@ fn app() -> Element {
 fn Projects() -> Element {
     rsx! {
         Header {}
-        Link {to: Route::Project { id: 1 }, "Radioxide"}
+        div {
+            class: "projects_list",
+            h1 {"Projects"}
+            Link {to: Route::Project { id: 1 }, class: "project_link", "Radioxide"}
+        }
         Footer {}
     }
 }
@@ -40,7 +44,6 @@ fn Project(id: i32) -> Element {
     let x = match id {
         1 => {
             rsx! {
-                Header {}
                 div {
                     class:"project",
                     h1 {"Radioxide"}
@@ -51,7 +54,6 @@ fn Project(id: i32) -> Element {
                     Multiple clients are able to listen streamer. 
                     Relay server connects streamer to worldwide listeners."
                     }
-                    Footer {}
                 }
             }
         }
@@ -62,7 +64,9 @@ fn Project(id: i32) -> Element {
         }
     };
     rsx! {
+        Header {}
         {x}
+        Footer {}
     }
 }
 
@@ -72,9 +76,9 @@ fn Header() -> Element {
     rsx!{
         header {
                 nav {
-                    class: "main-nav",
-                    Link {to: Route::Home{}, class:"main-nav-btn", "Home"}
-                    Link {to: Route::Projects{}, class:"main-nav-btn", "Projects"}
+                    class: "main_nav",
+                    Link {to: Route::Home{}, class:"main_nav_btn", "Home"}
+                    Link {to: Route::Projects{}, class:"main_nav_btn", "Projects"}
             }
         }
         div { id: "content",

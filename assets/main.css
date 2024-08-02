@@ -10,23 +10,35 @@
     }
 }
 
+.projects_list {
+    font-size: large;
+    color: white;
+}
+
+.project_link {
+    text-decoration: underline;
+    font-size: x-large;
+    color: azure;
+}
+
 body {
     background-color: rgba(0, 0, 0, 0.85);
     color: silver;
 }
 
-.main-nav-btn {
+.main_nav_btn {
     text-decoration:overline silver;
-    color: orange;
+    color: burlywood;
+    text-shadow: 1px 1px orange;
     font-size: xx-large;
     padding: 5%;
 }
 
-.main-nav-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.main_nav_btn:hover {
+    background-color: rgba(255, 240, 240, 0.2);
 }
 
-.main-nav {
+.main_nav {
     display: inline-block;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -37,7 +49,7 @@ header {
     background-size: cover;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     margin-bottom: 1% black;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 #name {
@@ -66,10 +78,6 @@ header {
 #social_links {
     display: inline-block;
     margin: 1%;
-}
-
-.main div {
-    color: silver;
 }
 
 footer {
