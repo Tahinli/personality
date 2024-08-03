@@ -13,12 +13,18 @@
 .projects_list {
     font-size: large;
     color: white;
+    margin-left: 1%;
+}
+
+.projects_list h1 {
+    margin-bottom: 2%;
 }
 
 .project_link {
     text-decoration: underline;
     font-size: x-large;
     color: azure;
+    margin-left: 1%;
 }
 
 body {
