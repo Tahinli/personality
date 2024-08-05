@@ -52,6 +52,22 @@ body {
     background-blend-mode: multiply;
 }
 
+.main {
+    margin: 1%;
+}
+
+
+#main_about {
+    display:block;
+    @media screen {
+        width: 50%;
+    }
+
+    @media screen and (max-width:820px){
+        width: 100%;
+    }
+}
+
 header {
     background-size: cover;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
@@ -90,6 +106,6 @@ header {
 footer {
     color: burlywood;
     bottom: 0;
-    position: fixed;
+    position:sticky;
     background-color: rgba(0, 0, 0, 0.9);
 }

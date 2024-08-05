@@ -79,7 +79,7 @@ fn Header() -> Element {
                     class: "main_nav",
                     Link {to: Route::Home{}, class:"main_nav_btn", "Home"}
                     Link {to: Route::Projects{}, class:"main_nav_btn", "Projects"}
-            }
+                }
         }
         div { id: "content",
             Outlet::<Route> {}
@@ -90,9 +90,11 @@ fn Header() -> Element {
 #[component]
 fn Footer() -> Element {
     rsx! {
-        footer{h4 {
+        footer{
+            h4 {
             "Developed by Tahinli with no Frontend Skills"
-        }}
+            }
+        }
     }
 }
 
@@ -120,6 +122,7 @@ fn Home() -> Element {
             }
                 
             div {
+                id: "main_about",
                 "
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consectetur lorem in augue gravida, eget tempus odio consectetur. Vestibulum ut pretium nibh. Praesent id eros id nunc dapibus rutrum. Suspendisse bibendum lacus in massa lobortis, a egestas lectus ullamcorper. Phasellus dignissim augue ac ultricies gravida. Pellentesque bibendum dapibus augue dictum porta. Donec laoreet fermentum dui, non suscipit ante. Nulla ac risus semper, mollis metus vitae, viverra justo. Phasellus ornare diam mi, sed pellentesque est porttitor eget. Proin quis semper mauris, ut maximus est. Vivamus id libero et sapien ullamcorper condimentum. Duis semper elit nibh, ut mattis est auctor nec. Proin porttitor elit arcu, at lobortis nulla lobortis nec. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ligula est, placerat sed felis sit amet, placerat dapibus justo. Duis ac congue purus.
 
