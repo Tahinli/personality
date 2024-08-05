@@ -103,9 +103,14 @@ header {
     margin: 1%;
 }
 
+.footer_div {
+    margin-top: 5%;
+}
+
 footer {
     color: burlywood;
     bottom: 0;
-    position:static;
-    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.9);
 }

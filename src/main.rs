@@ -90,11 +90,14 @@ fn Header() -> Element {
 #[component]
 fn Footer() -> Element {
     rsx! {
-        footer{
-            h4 {
-            "Developed by Tahinli with no Frontend Skills"
+        div {class:"footer_div",
+            footer{
+                h4 {
+                "Developed by Tahinli with no Frontend Skills"
+                }
             }
         }
+        
     }
 }
 
