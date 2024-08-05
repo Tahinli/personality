@@ -106,6 +106,6 @@ header {
 footer {
     color: burlywood;
     bottom: 0;
-    position:sticky;
+    position:static;
     background-color: rgba(0, 0, 0, 0.9);
 }
