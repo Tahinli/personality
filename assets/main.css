@@ -5,9 +5,12 @@
 }
 
 .project{
+    margin: 1%;
     h1 {
         color: azure;
-        margin-bottom: 1%;
+    }
+    div {
+        margin-top: 1%;
     }
 }
 
