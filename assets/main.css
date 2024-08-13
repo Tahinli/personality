@@ -9,6 +9,9 @@
     h1 {
         color: azure;
     }
+    h5 {
+        color: antiquewhite;
+    }
     div {
         margin-top: 1%;
     }
@@ -21,7 +24,7 @@
 }
 
 .projects_list h1 {
-    margin-bottom: 2%;
+    margin: 1%;
 }
 
 .project_link {
