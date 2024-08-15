@@ -28,18 +28,19 @@
 .projects_list {
     font-size: large;
     color: white;
-    margin-left: 1%;
+    margin: 1%;
 }
 
 .projects_list h1 {
-    margin: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 .project_link {
     text-decoration: underline;
     font-size: x-large;
     color: azure;
-    margin-left: 1%;
+    margin: 1%;
 }
 
 body {
