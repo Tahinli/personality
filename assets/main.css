@@ -10,6 +10,7 @@
         color: azure;
     }
     h5 {
+        margin-bottom: 1%;
         color: antiquewhite;
     }
     div {
@@ -23,6 +24,11 @@
             width: 100%;
         }
     }
+}
+
+#github_link_in_project_page {
+    text-decoration: none;
+    color: coral;
 }
 
 .projects_list {
@@ -74,6 +80,7 @@ body {
 
 #main_about {
     display:block;
+    white-space: pre-line;
     @media screen {
         width: 50%;
     }
