@@ -54,7 +54,10 @@ fn Project(id: i32) -> Element {
                         In this project any streamer can do their radio stream.
                         Streamer is able to stream audio input and also sound files. 
                         Multiple clients are able to listen streamer. 
-                        Relay server connects streamer to worldwide listeners.
+                        Relay server connects streamer to worldwide listeners. 
+                        Strategy is simple. Since normal users don't have a chance to share their ip publicly, 
+                        relay server collects data from streamer app. Frontend part's able to connect with relay server and 
+                        this allows people listen everywhere where the internet reaches. 
                     "
                     }
                 }
