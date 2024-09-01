@@ -16,7 +16,7 @@ pub fn Home() -> Element {
                 "Ahmet Kaan Gümüş"}
             h4 {
                 id: "title",
-                "System && Backend Developer"}
+                "System && Back End Developer"}
 
             div {
                 id: "social_links",
