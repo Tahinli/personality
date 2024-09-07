@@ -36,6 +36,10 @@ pub fn Project(id: i32) -> Element {
                         this allows people listen everywhere where the internet reaches. 
                     "
                     }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "I wanted to learn how to stream sound data."
+                    }
                 }
             }
         }
