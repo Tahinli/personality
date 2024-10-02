@@ -7,7 +7,7 @@ pub fn Publications() -> Element {
     rsx! {
         Header {}
         div {
-            class: "projects_list",
+            class: "publications_list",
             h1 {"Publications"}
         }
         Footer {}
