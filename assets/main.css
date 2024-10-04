@@ -111,8 +111,14 @@ body {
     text-decoration:overline silver;
     color: burlywood;
     text-shadow: 1px 1px orange;
-    font-size: xx-large;
     padding: 5%;
+    @media screen {
+        font-size: xx-large;
+    }
+
+    @media screen and (max-width:820px){
+        font-size: x-large;
+    }
 }
 
 .main_nav_btn:hover {
@@ -120,7 +126,7 @@ body {
 }
 
 .main_nav {
-    display: inline-block;
+    display:inline-flex;
     padding-top: 1%;
     padding-bottom: 1%;
     background-blend-mode: multiply;
