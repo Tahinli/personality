@@ -3,23 +3,22 @@ use dioxus::prelude::*;
 use crate::{Footer, Header};
 
 #[component]
-pub fn Publications() -> Element {
+pub fn Posts() -> Element {
     rsx! {
         Header {}
         div {
-            class: "publications_list",
-            h1 {"Publications"}
+            class: "posts_list",
+            h1 {"Posts"}
         }
         Footer {}
     }
 }
 
 #[component]
-pub fn Publication(id: i32) -> Element {
+pub fn Post(id: i32) -> Element {
     let x = match id {
         1 => {
-            rsx! {
-            }
+            rsx! {}
         }
         _ => {
             rsx! {

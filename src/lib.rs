@@ -1,11 +1,11 @@
 use dioxus::prelude::*;
 use home::Home;
+use posts::{Post, Posts};
 use projects::{Project, Projects};
-use publications::{Publication, Publications};
 
 pub mod home;
+pub mod posts;
 pub mod projects;
-pub mod publications;
 
 #[derive(Clone, Routable, Debug, PartialEq)]
 pub enum Route {
@@ -15,10 +15,10 @@ pub enum Route {
     Projects {},
     #[route("/projects/:id")]
     Project { id: i32 },
-    #[route("/publications/")]
-    Publications {},
-    #[route("/publications/:id")]
-    Publication { id: i32 },
+    #[route("/posts/")]
+    Posts {},
+    #[route("/posts/:id")]
+    Post { id: i32 },
 }
 
 #[component]
@@ -29,7 +29,7 @@ pub fn Header() -> Element {
                     class: "main_nav",
                     Link {to: Route::Home{}, class:"main_nav_btn", "Home"}
                     Link {to: Route::Projects{}, class:"main_nav_btn", "Projects"}
-                    Link {to: Route::Publications{}, class:"main_nav_btn", "Publications"}
+                    Link {to: Route::Posts {}, class:"main_nav_btn", "Posts"}
                 }
         }
         div { id: "content",
