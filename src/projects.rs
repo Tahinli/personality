@@ -40,6 +40,11 @@ pub fn Project(id: i32) -> Element {
                     div {
                         "I wanted to learn how to stream sound data."
                     }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "Websocket, TLS, Stream Optimization, Sound Mix, How Sound Works, ELM Architecture"
+                    }
                 }
             }
         }
