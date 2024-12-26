@@ -11,11 +11,11 @@ pub mod projects;
 pub enum Route {
     #[route("/")]
     Home {},
-    #[route("/projects/")]
+    #[route("/projects")]
     Projects {},
     #[route("/projects/:id")]
     Project { id: i32 },
-    #[route("/posts/")]
+    #[route("/posts")]
     Posts {},
     #[route("/posts/:id")]
     Post { id: i32 },
