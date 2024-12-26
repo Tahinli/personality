@@ -9,7 +9,8 @@ pub fn Projects() -> Element {
         div {
             class: "projects_list",
             h1 {"Projects"}
-            Link {to: Route::Project { id: 1 }, class: "project_link", "Radioxide"}
+            div { class: "project_link", Link {to: Route::Project { id: 1 }, class: "project_link", "Radioxide"} }
+            div { class: "project_link", Link {to: Route::Project { id: 2 }, class: "project_link", "Memory Filler Killer"} }
         }
         Footer {}
     }
@@ -44,6 +45,37 @@ pub fn Project(id: i32) -> Element {
                     h3 {"What I learned ?"}
                     div {
                         "Websocket, TLS, Stream Optimization, Sound Mix, How Sound Works, ELM Architecture"
+                    }
+                }
+            }
+        }
+
+        2 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"Memory Filler Killer"}
+                    h5 {"Memory fullness checker written in rust "}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/rust-memory-filler-killer", "GitHub"}
+                    div {
+                    "
+                        In this project a program checks for available memory.
+                        If available memory gets lower then given value, program tries to find memory filler.
+                        When memory filler found by the program, it will be killed to keep operating system alive.
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "Linux normally has this kind of feature. 
+                        If it lacks of memory to keep OS alive then program that uses most of the memory be killed by kernel.
+                        Problem is it's not working well. I don't know why but 
+                        I got in a situation like a program consumes all of my memory by some kind of leak but kernel couldn't do anything and my system crashed.
+                        I wanted to solve this problem, now I use my program as a service for my own system to prevent myself from being in same situation."
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "Interacting with OS and processes via sysinfo crate."
                     }
                 }
             }

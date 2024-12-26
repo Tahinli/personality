@@ -13,3 +13,15 @@ dioxus = { version = "0.6.1", features = ["web", "router"] }
 # Debug
 tracing = "0.1.41"
 dioxus-logger = "0.6.1"
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
