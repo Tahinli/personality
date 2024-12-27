@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pull:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH Keys
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+      - name: Connect and Pull
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "export PATH="${{ secrets.CARGO_PATH }}:$PATH" && cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull --rebase && dx build --release && cp -r ${{ secrets.ARTIFACT_DIR }} ${{ secrets.DEPLOY_PATH }} && rm -rf ${{ secrets.DEPLOY_PATH }}/personality && mv ${{ secrets.DEPLOY_PATH }}/public ${{ secrets.DEPLOY_PATH }}/personality"
+
+      - name: Cleaning
+        run: rm -rf ~/.ssh
