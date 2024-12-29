@@ -12,6 +12,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 1 }, class: "project_link", "Radioxide"} }
             div { class: "project_link", Link {to: Route::Project { id: 2 }, class: "project_link", "TCP File Transfer"} }
             div { class: "project_link", Link {to: Route::Project { id: 3 }, class: "project_link", "Memory Filler Killer"} }
+            div { class: "project_link", Link {to: Route::Project { id: 4 }, class: "project_link", "Package Manager"} }
         }
         Footer {}
     }
@@ -108,16 +109,47 @@ pub fn Project(id: i32) -> Element {
                     }
                     h3 {"Why I did this ?"}
                     div {
-                        "Linux normally has this kind of feature.
-                        If it lacks of memory to keep OS alive then program that uses most of the memory be killed by kernel.
-                        Problem is it's not working well. I don't know why but 
-                        I got in a situation like a program consumes all of my memory by some kind of leak but kernel couldn't do anything and my system crashed.
-                        I wanted to solve this problem, now I use my program as a service for my own system to prevent myself from being in same situation."
+                        "
+                            Linux normally has this kind of feature.
+                            If it lacks of memory to keep OS alive then program that uses most of the memory be killed by kernel.
+                            Problem is it's not working well. I don't know why but 
+                            I got in a situation like a program consumes all of my memory by some kind of leak but kernel couldn't do anything and my system crashed.
+                            I wanted to solve this problem, now I use my program as a service for my own system to prevent myself from being in same situation.
+                        "
                     }
 
                     h3 {"What I learned ?"}
                     div {
                         "Interacting with operating system and processes for reading data and sending signals."
+                    }
+                }
+            }
+        }
+        4 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"Package Manager"}
+                    h5 {"Package manager written in Rust"}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/rust-package-manager", "GitHub"}
+                    div {
+                    "
+                        In this project user can upload own packages to server then able to update and delete.
+                        Other users can download and install uploaded packages to their systems. 
+                        They are able to update and delete packages. 
+                        Also client side supports updating all packages that is already installed on the system. 
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "
+                            I wanted to learn how can I build package manager since I use them everyday.
+                        "
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "Seems like I didn't learn new things but made stronger what I knew."
                     }
                 }
             }
