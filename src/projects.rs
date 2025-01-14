@@ -13,6 +13,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 2 }, class: "project_link", "TCP File Transfer"} }
             div { class: "project_link", Link {to: Route::Project { id: 3 }, class: "project_link", "Memory Filler Killer"} }
             div { class: "project_link", Link {to: Route::Project { id: 4 }, class: "project_link", "Package Manager"} }
+            div { class: "project_link", Link {to: Route::Project { id: 5 }, class: "project_link", "Personality"} }
         }
         Footer {}
     }
@@ -150,6 +151,36 @@ pub fn Project(id: i32) -> Element {
                     h3 {"What I learned ?"}
                     div {
                         "Seems like I didn't learn new things but made stronger what I knew."
+                    }
+                }
+            }
+        }
+
+        5 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"Personality"}
+                    h5 {"Personal website written in Rust"}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/personality", "GitHub"}
+                    div {
+                    "
+                        In this project I wanted to build portfolio website for myself and currently you're viewing what is built.
+                        There are couple pages and sections. It's a static page based on WASM.
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "
+                            I wanted to learn HTML and CSS a bit also having website as a document of yourself sounds nice.
+                        "
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "
+                            Little bit HTML and CSS. I wish I could create better views but doing this kind of things always hard for me.
+                        "
                     }
                 }
             }
