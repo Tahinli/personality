@@ -14,6 +14,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 3 }, class: "project_link", "Memory Filler Killer"} }
             div { class: "project_link", Link {to: Route::Project { id: 4 }, class: "project_link", "Package Manager"} }
             div { class: "project_link", Link {to: Route::Project { id: 5 }, class: "project_link", "Personality"} }
+            div { class: "project_link", Link {to: Route::Project { id: 6 }, class: "project_link", "UDP Hole Puncher"} }
         }
         Footer {}
     }
@@ -155,7 +156,6 @@ pub fn Project(id: i32) -> Element {
                 }
             }
         }
-
         5 => {
             rsx! {
                 div {
@@ -185,6 +185,37 @@ pub fn Project(id: i32) -> Element {
                 }
             }
         }
+        6 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"UDP Hole Puncher"}
+                    h5 {"UDP hole puncher written in Rust"}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/rust-udp-hole-puncher", "GitHub"}
+                    div {
+                    "
+                        In this project I wanted to bypass NAT (Network Address Translation) limitations. Because of lack of IPv4 addresses and security reasons we have public and private addresses.
+                        In this situation, we can't easily create peer to peer connection unfortunately. Thanks to UDP hole punching strategy, we may bypass NAT restrictions. 
+                        I can't say it works every time because NAT strategies are getting complex by different layers and even creating a hole for your router not enough for peer connection.
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "
+                            I wanted to create peer to peer connection without sending actual data to some relay server. UDP hole punching still rely on at least a connectable address (let's say a relay) but just for creating a hole not for sending all data.
+                        "
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "
+                            I learnt more details and different type of NATs. Working with UDP is also another plus.
+                        "
+                    }
+                }
+            }
+        }
+
         _ => {
             rsx! {
                 h1 {"You're not supposed to be here"}
