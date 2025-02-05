@@ -15,6 +15,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 4 }, class: "project_link", "Package Manager"} }
             div { class: "project_link", Link {to: Route::Project { id: 5 }, class: "project_link", "Personality"} }
             div { class: "project_link", Link {to: Route::Project { id: 6 }, class: "project_link", "UDP Hole Puncher"} }
+            div { class: "project_link", Link {to: Route::Project { id: 7 }, class: "project_link", "Blockchain"} }
         }
         Footer {}
     }
@@ -37,7 +38,7 @@ pub fn Project(id: i32) -> Element {
                         Multiple clients are able to listen streamer. 
                         Relay server connects streamer to worldwide listeners. 
                         Strategy is simple. Since normal users don't have a chance to share their IP publicly, 
-                        relay server collects data from streamer app. Frontend part's able to connect with relay server and 
+                        relay server collects data from streamer app. Front end part's able to connect with relay server and 
                         this allows people listen everywhere where the internet reaches. 
                     "
                     }
@@ -48,7 +49,7 @@ pub fn Project(id: i32) -> Element {
 
                     h3 {"What I learned ?"}
                     div {
-                        "Websocket, TLS, Stream Optimization, Sound Mix, How Sound Works, ELM Architecture"
+                        "WebSocket, TLS, Stream Optimization, Sound Mix, How Sound Works, ELM Architecture"
                     }
                 }
             }
@@ -202,7 +203,7 @@ pub fn Project(id: i32) -> Element {
                     h3 {"Why I did this ?"}
                     div {
                         "
-                            I wanted to create peer to peer connection without sending actual data to some relay server. UDP hole punching still rely on at least a connectable address (let's say a relay) but just for creating a hole not for sending all data.
+                            I wanted to create peer to peer connection without sending actual data to some relay server. UDP hole punching still rely on at least a connectible address (let's say a relay) but just for creating a hole not for sending all data.
                         "
                     }
 
@@ -215,7 +216,34 @@ pub fn Project(id: i32) -> Element {
                 }
             }
         }
+        7 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"Blockchain"}
+                    h5 {"Blockchain written in Rust"}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/rust-blockchain", "GitHub"}
+                    div {
+                    "
+                        In this project I wanted to implement a blockchain structure from scratch. Basically project starts with defining block, blockchain, genesis block so on. After that I created network strategy to transfer these blocks to miners. When miners mine blocks, server tries to collect data from them and decides what next blocks will be by consensus mechanism.                       
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "
+                            Basically I wanted to learn how things work in blockchain side.
+                        "
+                    }
 
+                    h3 {"What I learned ?"}
+                    div {
+                        "
+                            I realised pitfalls of the blockchain technology more clearly by the first hand.
+                        "
+                    }
+                }
+            }
+        }
         _ => {
             rsx! {
                 h1 {"You're not supposed to be here"}
