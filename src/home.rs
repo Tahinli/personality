@@ -29,7 +29,7 @@ pub fn Home() -> Element {
                 id: "main_about",
                     "
                 Hi, I'm Ahmet Kaan. I'm Turk. I was born in 2001.
-                I'm currently studying on Computer Science major in Erciyes University and I hope it's last term.
+                I graduated from the computer science major at Erciyes University.
 
                 I'm keen on understanding computers as deeply as possible.
                 I love open source philosophy and KISS principle.
