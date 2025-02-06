@@ -16,6 +16,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 5 }, class: "project_link", "Personality"} }
             div { class: "project_link", Link {to: Route::Project { id: 6 }, class: "project_link", "UDP Hole Puncher"} }
             div { class: "project_link", Link {to: Route::Project { id: 7 }, class: "project_link", "Blockchain"} }
+            div { class: "project_link", Link {to: Route::Project { id: 8 }, class: "project_link", "Optimization Algorithms"} }
         }
         Footer {}
     }
@@ -239,6 +240,35 @@ pub fn Project(id: i32) -> Element {
                     div {
                         "
                             I realised pitfalls of the blockchain technology more clearly by the first hand.
+                        "
+                    }
+                }
+            }
+        }
+        8 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"Optimization Algorithms"}
+                    h5 {"Optimization Algorithms written in Rust"}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/optimization_algorithms", "GitHub"}
+                    div {
+                    "
+                        In this project I implemented couple of optimization algorithms in Rust. In general they are very useful in many places included: hyper parameter optimization, food search, reducing cost for production and more. I have to mention Artificial Bee Colony algorithm created by Prof. Dr. Derviş Karaboğa, performs great performance and robustness especially in artificial intelligence area.
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "
+                            Firstly it was optional assessment for university course but then it became a passion to learn. Especially when I had a chance to publish my work on official university page, I really put a lot of effort to create Rust version as correct as possible. You can find it here:  
+                        "
+                    Link {to: "https://abc.erciyes.edu.tr", "Erciyes University"}
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "
+                            How things works on optimization area. Specifically why we need them instead of calculating perfect mathematical equation for every possible problem to achieve correct results. This optimization techniques lead an expanded view for my life also.
                         "
                     }
                 }
