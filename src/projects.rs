@@ -17,6 +17,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 6 }, class: "project_link", "UDP Hole Puncher"} }
             div { class: "project_link", Link {to: Route::Project { id: 7 }, class: "project_link", "Blockchain"} }
             div { class: "project_link", Link {to: Route::Project { id: 8 }, class: "project_link", "Optimization Algorithms"} }
+            div { class: "project_link", Link {to: Route::Project { id: 9 }, class: "project_link", "Forum"} }
         }
         Footer {}
     }
@@ -270,6 +271,30 @@ pub fn Project(id: i32) -> Element {
                         "
                             How things works on optimization area. Specifically why we need them instead of calculating perfect mathematical equation for every possible problem to achieve correct results. This optimization techniques lead an expanded view for my life also.
                         "
+                    }
+                }
+            }
+        }
+        9 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"Forum"}
+                    h5 {"Forum back end written in Rust."}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/rust_forum", "GitHub"}
+                    div {
+                    "
+                        In this project I wanted to implement forum back end. It has authentication and authorization with JWT. It has fully asynchronous architecture with Postgres.
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "It was going to be used for university club but we decided to go on with battle tested one."
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "Writing middleware and implementing JWT"
                     }
                 }
             }
