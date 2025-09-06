@@ -18,6 +18,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 7 }, class: "project_link", "Blockchain"} }
             div { class: "project_link", Link {to: Route::Project { id: 8 }, class: "project_link", "Optimization Algorithms"} }
             div { class: "project_link", Link {to: Route::Project { id: 9 }, class: "project_link", "Forum"} }
+            div { class: "project_link", Link {to: Route::Project { id: 10 }, class: "project_link", "Voice Chat"} }
         }
         Footer {}
     }
@@ -295,6 +296,30 @@ pub fn Project(id: i32) -> Element {
                     h3 {"What I learned ?"}
                     div {
                         "Writing middleware and implementing JWT"
+                    }
+                }
+            }
+        }
+        10 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"Voice Chat"}
+                    h5 {"Voice Chat written in Rust."}
+                    Link {id: "codeberg_link_in_project_page", to: "https://codeberg.org/Tahinli/rust_voice_chat", "Codeberg"}
+                    div {
+                    "
+                        In this project I wanted to implement voice chat with QUIC protocol.
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "I wanted to use QUIC protocol."
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "Streaming data with QUIC protocol."
                     }
                 }
             }
