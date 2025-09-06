@@ -28,5 +28,5 @@ steps:
             - mkdir -p ~/.ssh
             - echo "$${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
             - ssh-keyscan -H $${SSH_HOST} > ~/.ssh/known_hosts 
-            - ssh $${SSH_USER}@$${SSH_HOST} "export PATH="$${CARGO_PATH}:$PATH" && cd $${WORK_DIR} && git checkout $${MAIN_BRANCH} && git pull --rebase && dx build --release && cp -r $${ARTIFACT_DIR} $${DEPLOY_PATH} && rm -rf $${DEPLOY_PATH}/personality && mv $${DEPLOY_PATH}/public $${DEPLOY_PATH}/personality"
+            - ssh $${SSH_USER}@$${SSH_HOST} "export PATH="$${CARGO_PATH}:$PATH" && cd $${WORK_DIR} && git checkout $${MAIN_BRANCH} && git pull --rebase && dx bundle --release && cp -r $${ARTIFACT_DIR} $${DEPLOY_PATH} && rm -rf $${DEPLOY_PATH}/personality && mv $${DEPLOY_PATH}/public $${DEPLOY_PATH}/personality"
             - rm -rf ~/.ssh
