@@ -165,7 +165,7 @@ pub fn Project(id: i32) -> Element {
                     class:"project",
                     h1 {"Personality"}
                     h5 {"Personal website written in Rust"}
-                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/personality", "GitHub"}
+                    Link {id: "codeberg_link_in_project_page", to: "https://codeberg.org/Tahinli/personality", "Codeberg"}
                     div {
                     "
                         In this project I wanted to build portfolio website for myself and currently you're viewing what is built.

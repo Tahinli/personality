@@ -29,6 +29,10 @@
         }
     }
 }
+#codeberg_link_in_project_page {
+    text-decoration: none;
+    color: rgb(33, 133, 208, 1.0);
+}
 
 #github_link_in_project_page {
     text-decoration: none;
@@ -166,6 +170,14 @@ header {
     margin-bottom: 1%;
 }
 
+#codeberg {
+    margin: 5%;
+    color: rgb(33, 133, 208, 1.0);
+    font-size: large;
+    font-weight: bold;
+}
+
+
 #github {
     margin: 5%;
     color: brown;
@@ -175,7 +187,7 @@ header {
 
 #linkedin {
     margin: 5%;
-    color:cornflowerblue;
+    color: cornflowerblue;
     font-size: large;
     font-weight: bold;
 }

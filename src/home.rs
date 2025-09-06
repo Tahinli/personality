@@ -20,7 +20,7 @@ pub fn Home() -> Element {
 
             div {
                 id: "social_links",
-                Link {id:"github",to: "https://github.com/tahinli", "GitHub"}
+                Link {id:"codeberg",to: "https://codeberg.org/Tahinli", "Codeberg"}
 
                 Link {id:"linkedin",to: "https://linkedin.com/in/ahmetkaangumus", "LinkedIn"}
             }
