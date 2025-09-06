@@ -20,6 +20,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 9 }, class: "project_link", "Forum"} }
             div { class: "project_link", Link {to: Route::Project { id: 10 }, class: "project_link", "Voice Chat"} }
             div { class: "project_link", Link {to: Route::Project { id: 11 }, class: "project_link", "WebRTC"} }
+            div { class: "project_link", Link {to: Route::Project { id: 12 }, class: "project_link", "Voice Chat Room"} }
         }
         Footer {}
     }
@@ -345,6 +346,30 @@ pub fn Project(id: i32) -> Element {
                     h3 {"What I learned ?"}
                     div {
                         "Streaming with WebRTC with low level browser WASM API."
+                    }
+                }
+            }
+        }
+        12 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"Voice Chat Room"}
+                    h5 {"Voice chat room written in Rust."}
+                    Link {id: "source_link_in_project_page", to: "https://source.tahinli.com/Tahinli/rust_voice_chat_room", "Source"}
+                    div {
+                    "
+                        In this project I wanted to implement voice chat room for real-time audio communication with low latency audio processing.
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "I wanted to create voice chat application with a relay server and without many dependencies. Since I already did simple client / server only one with no audio processing in some of the previous projects, I wanted to improve things."
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "I understand how audio works better in general. Especially in low latency and streaming area. Since audio buffers are always hungry for samples and networks, streams, thread locks, thread waking from sleep, context switching are always creates latency, I learned a lot of things for real-time applications. I tried for a month to create reliable audio mixer because there is no room for latency, even an await for async task. I finally come up with simple approach to solve things. Probably I can improve more but since I understand the process and further improvements never ends, I'm going to keep it as it is."
                     }
                 }
             }
