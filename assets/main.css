@@ -4,31 +4,42 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.project{
+.project {
     margin: 1%;
+
     h1 {
         color: azure;
     }
+
     h3 {
         margin-top: 1%;
         color: aliceblue;
     }
+
     h5 {
         margin-bottom: 1%;
         color: antiquewhite;
     }
+
     div {
         margin-top: 1%;
-        display:block;
+        display: block;
+
         @media screen {
             width: 50%;
         }
 
-        @media screen and (max-width:820px){
+        @media screen and (max-width:820px) {
             width: 100%;
         }
     }
 }
+
+#source_link_in_project_page {
+    text-decoration: none;
+    color: burlywood;
+}
+
 #codeberg_link_in_project_page {
     text-decoration: none;
     color: rgb(33, 133, 208, 1.0);
@@ -45,27 +56,32 @@
     margin: 1%;
 }
 
-.links{
+.links {
     margin: 1%;
+
     h1 {
         color: azure;
     }
+
     h3 {
         margin-top: 1%;
         color: aliceblue;
     }
+
     h5 {
         margin-bottom: 1%;
         color: antiquewhite;
     }
+
     div {
         margin-top: 1%;
-        display:block;
+        display: block;
+
         @media screen {
             width: 50%;
         }
 
-        @media screen and (max-width:820px){
+        @media screen and (max-width:820px) {
             width: 100%;
         }
     }
@@ -92,27 +108,32 @@
     margin: 1%;
 }
 
-.project{
+.project {
     margin: 1%;
+
     h1 {
         color: azure;
     }
+
     h3 {
         margin-top: 1%;
         color: aliceblue;
     }
+
     h5 {
         margin-bottom: 1%;
         color: antiquewhite;
     }
+
     div {
         margin-top: 1%;
-        display:block;
+        display: block;
+
         @media screen {
             width: 50%;
         }
 
-        @media screen and (max-width:820px){
+        @media screen and (max-width:820px) {
             width: 100%;
         }
     }
@@ -147,15 +168,16 @@ body {
 }
 
 .main_nav_btn {
-    text-decoration:overline silver;
+    text-decoration: overline silver;
     color: burlywood;
     text-shadow: 1px 1px orange;
     padding: 5%;
+
     @media screen {
         font-size: xx-large;
     }
 
-    @media screen and (max-width:820px){
+    @media screen and (max-width:820px) {
         font-size: x-large;
     }
 }
@@ -165,7 +187,7 @@ body {
 }
 
 .main_nav {
-    display:inline-flex;
+    display: inline-flex;
     padding-top: 1%;
     padding-bottom: 1%;
     background-blend-mode: multiply;
@@ -177,13 +199,14 @@ body {
 
 
 #main_about {
-    display:block;
+    display: block;
     white-space: pre-line;
+
     @media screen {
         width: 50%;
     }
 
-    @media screen and (max-width:820px){
+    @media screen and (max-width:820px) {
         width: 100%;
     }
 }
@@ -200,7 +223,7 @@ header {
 }
 
 #title {
-    color:aqua;
+    color: aqua;
     margin-top: 1%;
     margin-bottom: 1%;
 }

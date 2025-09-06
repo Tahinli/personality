@@ -19,6 +19,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 8 }, class: "project_link", "Optimization Algorithms"} }
             div { class: "project_link", Link {to: Route::Project { id: 9 }, class: "project_link", "Forum"} }
             div { class: "project_link", Link {to: Route::Project { id: 10 }, class: "project_link", "Voice Chat"} }
+            div { class: "project_link", Link {to: Route::Project { id: 11 }, class: "project_link", "WebRTC"} }
         }
         Footer {}
     }
@@ -320,6 +321,30 @@ pub fn Project(id: i32) -> Element {
                     h3 {"What I learned ?"}
                     div {
                         "Streaming data with QUIC protocol."
+                    }
+                }
+            }
+        }
+        11 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"WebRTC"}
+                    h5 {"WebRTC Voice Chat written in Rust."}
+                    Link {id: "source_link_in_project_page", to: "https://source.tahinli.com/Tahinli/rust_webrtc", "Source"}
+                    div {
+                    "
+                        In this project I wanted to implement voice chat with WebRTC.
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "I wanted to use WebRTC."
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                        "Streaming with WebRTC with low level browser WASM API."
                     }
                 }
             }
