@@ -44,7 +44,7 @@ pub fn Footer() -> Element {
         div {class:"footer_div",
             footer{
                 h4 {
-                "Developed by Tahinli with Rust + WASM without Front End Skills"
+                "Developed by Tahinli with Rust + WASM"
                 }
             }
         }
