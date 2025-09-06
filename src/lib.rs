@@ -35,6 +35,7 @@ pub fn Header() -> Element {
                     Link {to: Route::Projects{}, class:"main_nav_btn", "Projects"}
                     Link {to: Route::Posts {}, class:"main_nav_btn", "Posts"}
                     Link {to: Route::Links {}, class:"main_nav_btn", "Links"}
+                    Link {to: "https://source.tahinli.com", class:"main_nav_btn", "Source"}
                 }
         }
         div { id: "content",
