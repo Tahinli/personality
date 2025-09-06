@@ -19,13 +19,6 @@ pub fn Home() -> Element {
                 "System && Back End Developer"}
 
             div {
-                id: "social_links",
-                Link {id:"codeberg",to: "https://codeberg.org/Tahinli", "Codeberg"}
-
-                Link {id:"linkedin",to: "https://linkedin.com/in/ahmetkaangumus", "LinkedIn"}
-            }
-
-            div {
                 id: "main_about",
                     "
                 Hi, I'm Ahmet Kaan. I'm Turk. I was born in 2001.

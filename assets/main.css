@@ -39,15 +39,50 @@
     color: coral;
 }
 
-.projects_list {
+.links_list {
     font-size: large;
     color: white;
     margin: 1%;
 }
 
-.projects_list h1 {
-    margin-top: 1%;
-    margin-bottom: 1%;
+.links{
+    margin: 1%;
+    h1 {
+        color: azure;
+    }
+    h3 {
+        margin-top: 1%;
+        color: aliceblue;
+    }
+    h5 {
+        margin-bottom: 1%;
+        color: antiquewhite;
+    }
+    div {
+        margin-top: 1%;
+        display:block;
+        @media screen {
+            width: 50%;
+        }
+
+        @media screen and (max-width:820px){
+            width: 100%;
+        }
+    }
+}
+
+.links_link {
+    text-decoration: underline;
+    font-size: x-large;
+    color: azure;
+    margin: 1%;
+}
+
+
+.projects_list {
+    font-size: large;
+    color: white;
+    margin: 1%;
 }
 
 .project_link {
