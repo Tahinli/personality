@@ -4,6 +4,42 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.post {
+    margin: 1%;
+
+    h1 {
+        color: azure;
+    }
+
+    h3 {
+        margin-top: 1%;
+        color: aliceblue;
+    }
+
+    h5 {
+        margin-bottom: 1%;
+        color: antiquewhite;
+    }
+
+    div {
+        margin-top: 1%;
+        display: block;
+        color: antiquewhite;
+
+        @media screen {
+            width: 50%;
+        }
+
+        @media screen and (max-width:820px) {
+            width: 100%;
+        }
+    }
+
+    p {
+        margin: 1%;
+    }
+}
+
 .project {
     margin: 1%;
 

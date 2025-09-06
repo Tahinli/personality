@@ -20,17 +20,14 @@ pub fn Home() -> Element {
 
             div {
                 id: "main_about",
-                    "
-                Hi, I'm Ahmet Kaan. I'm Turk. I was born in 2001.
-                I graduated from the computer engineering major at Erciyes University.
-
-                I'm keen on understanding computers as deeply as possible.
-                I love open source philosophy and KISS principle.
-
-                My passion is to create software that's able to live as long as possible. Developers should write versatile, bug free programs. Using software is impossible to ignore. World's leading with software and will be. We as developers must think as many possibility as possible to create robust and secure programs.
-
-                I wish I will be able to create free and open source software that is widely used by people without even let them thinking about their privacy and robustness of my program.
                 "
+               Hi, 
+
+               I’m Ahmet Kaan. I’m Turkish and was born in 2001. I graduated with a degree in Computer Engineering from Erciyes University. I’m keen on understanding computers as deeply as possible and I love the open‑source philosophy and the KISS principle.
+
+My passion is to create software that can stand the test of time. Developers should write versatile, bug‑free programs. It’s impossible to ignore the impact of software. Today’s world is led by it and will continue to be. As developers, we must consider as many possibilities as we can in order to build robust and secure applications.
+
+I hope to create free and open‑source software that is widely used, allowing people to benefit from it without having to worry about privacy or the reliability of the program.               "
             }
         }
         Footer {}

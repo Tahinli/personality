@@ -6,7 +6,10 @@ pub mod projects;
 use dioxus::prelude::*;
 use home::Home;
 use links::Links;
-use posts::{Post, Posts};
+use posts::{
+    open_letters::OpenLetter, open_letters::OpenLetters, writings::Writing, writings::Writings,
+    Posts,
+};
 use projects::{Project, Projects};
 
 #[derive(Clone, Routable, Debug, PartialEq)]
@@ -19,8 +22,14 @@ pub enum Route {
     Project { id: i32 },
     #[route("/posts")]
     Posts {},
-    #[route("/posts/:id")]
-    Post { id: i32 },
+    #[route("/posts/writings")]
+    Writings {},
+    #[route("/posts/writings/:id")]
+    Writing { id: i32 },
+    #[route("/posts/open_letters")]
+    OpenLetters {},
+    #[route("/posts/open_letters/:id")]
+    OpenLetter { id: i32 },
     #[route("/links")]
     Links {},
 }
@@ -35,7 +44,6 @@ pub fn Header() -> Element {
                     Link {to: Route::Projects{}, class:"main_nav_btn", "Projects"}
                     Link {to: Route::Posts {}, class:"main_nav_btn", "Posts"}
                     Link {to: Route::Links {}, class:"main_nav_btn", "Links"}
-                    Link {to: "https://source.tahinli.com", class:"main_nav_btn", "Source"}
                 }
         }
         div { id: "content",

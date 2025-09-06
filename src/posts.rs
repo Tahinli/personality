@@ -1,6 +1,8 @@
-use dioxus::prelude::*;
+pub mod open_letters;
+pub mod writings;
 
-use crate::{Footer, Header};
+use crate::{Footer, Header, Route};
+use dioxus::prelude::*;
 
 #[component]
 pub fn Posts() -> Element {
@@ -9,26 +11,9 @@ pub fn Posts() -> Element {
         div {
             class: "posts_list",
             h1 {"Posts"}
+            div { class: "post_link", Link {to: Route::Writings {  }, class: "post_link", "Writings"} }
+            div { class: "post_link", Link {to: Route::OpenLetters {  }, class: "post_link", "Open Letters"} }
         }
-        Footer {}
-    }
-}
-
-#[component]
-pub fn Post(id: i32) -> Element {
-    let x = match id {
-        1 => {
-            rsx! {}
-        }
-        _ => {
-            rsx! {
-                h1 {"You're not supposed to be here"}
-            }
-        }
-    };
-    rsx! {
-        Header {}
-        {x}
         Footer {}
     }
 }
