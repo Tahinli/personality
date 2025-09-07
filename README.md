@@ -1,6 +1,5 @@
-# personality
+ personality
 
 My personal website
 
-[![status-badge](https://ci.codeberg.org/api/badges/14212/status.svg)](https://ci.codeberg.org/repos/14212)
-
+[![.github/workflows/deploy.yaml](https://github.com/Tahinli/personality/actions/workflows/deploy.yaml/badge.svg)](https://github.com/Tahinli/personality/actions/workflows/deploy.yaml)

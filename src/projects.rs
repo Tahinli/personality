@@ -151,7 +151,7 @@ pub fn Project(id: i32) -> Element {
                     h3 {"Why I did this ?"}
                     div {
                         "
-                            I wanted to learn how can I build package manager since I use them everyday.
+                            I wanted to learn how can I build package manager since I use them everyday.g
                         "
                     }
 
@@ -168,7 +168,7 @@ pub fn Project(id: i32) -> Element {
                     class:"project",
                     h1 {"Personality"}
                     h5 {"Personal website written in Rust"}
-                    Link {id: "codeberg_link_in_project_page", to: "https://codeberg.org/Tahinli/personality", "Codeberg"}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/personality", "GitHub"}
                     div {
                     "
                         In this project I wanted to build portfolio website for myself and currently you're viewing what is built.
@@ -308,7 +308,7 @@ pub fn Project(id: i32) -> Element {
                     class:"project",
                     h1 {"Voice Chat"}
                     h5 {"Voice Chat written in Rust."}
-                    Link {id: "codeberg_link_in_project_page", to: "https://codeberg.org/Tahinli/rust_voice_chat", "Codeberg"}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/rust_voice_chat", "GitHub"}
                     div {
                     "
                         In this project I wanted to implement voice chat with QUIC protocol.
@@ -332,7 +332,7 @@ pub fn Project(id: i32) -> Element {
                     class:"project",
                     h1 {"WebRTC"}
                     h5 {"WebRTC Voice Chat written in Rust."}
-                    Link {id: "source_link_in_project_page", to: "https://source.tahinli.com/Tahinli/rust_webrtc", "Source"}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/rust_webrtc", "GitHub"}
                     div {
                     "
                         In this project I wanted to implement voice chat with WebRTC.
@@ -356,7 +356,7 @@ pub fn Project(id: i32) -> Element {
                     class:"project",
                     h1 {"Voice Chat Room"}
                     h5 {"Voice chat room written in Rust."}
-                    Link {id: "source_link_in_project_page", to: "https://source.tahinli.com/Tahinli/rust_voice_chat_room", "Source"}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/rust_voice_chat_room", "GitHub"}
                     div {
                     "
                         In this project I wanted to implement voice chat room for real-time audio communication with low latency audio processing.
