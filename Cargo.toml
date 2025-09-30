@@ -1,7 +1,7 @@
 [package]
 name = "personality"
 version = "0.1.0"
-authors = ["Ahmet Kaan GÜMÜŞ <96421894+Tahinli@users.noreply.github.com>"]
+authors = ["Ahmet Kaan GÜMÜŞ <tahinli@tahinli.com>"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

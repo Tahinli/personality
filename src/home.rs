@@ -16,12 +16,12 @@ pub fn Home() -> Element {
                 "Ahmet Kaan Gümüş"}
             h4 {
                 id: "title",
-                "Engineer"}
+                "Software Engineer"}
 
             div {
                 id: "main_about",
                 "
-               Hi, 
+               Hi,
 
                I’m Ahmet Kaan. I’m Turkish and was born in 2001. I graduated with a degree in Computer Engineering from Erciyes University. I’m keen on understanding computers as deeply as possible and I love the open‑source philosophy and the KISS principle.
 
