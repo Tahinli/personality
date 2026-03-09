@@ -8,11 +8,8 @@ edition = "2021"
 
 [dependencies]
 
-dioxus = { version = "0.6.3", features = ["web", "router"] }
+dioxus = { version = "0.7.3", features = ["web", "router"] }
 
-# Debug
-tracing = "0.1.41"
-dioxus-logger = "0.6.2"
 
 [profile]
 
