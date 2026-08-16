@@ -21,6 +21,7 @@ pub fn Projects() -> Element {
             div { class: "project_link", Link {to: Route::Project { id: 10 }, class: "project_link", "Voice Chat"} }
             div { class: "project_link", Link {to: Route::Project { id: 11 }, class: "project_link", "WebRTC"} }
             div { class: "project_link", Link {to: Route::Project { id: 12 }, class: "project_link", "Voice Chat Room"} }
+            div { class: "project_link", Link {to: Route::Project { id: 13 }, class: "project_link", "OS"} }
         }
         Footer {}
     }
@@ -370,6 +371,32 @@ pub fn Project(id: i32) -> Element {
                     h3 {"What I learned ?"}
                     div {
                         "I understand how audio works better in general. Especially in low latency and streaming area. Since audio buffers are always hungry for samples and networks, streams, thread locks, thread waking from sleep, context switching are always creates latency, I learned a lot of things for real-time applications. I tried for a month to create reliable audio mixer because there is no room for latency, even an await for async task. I finally come up with simple approach to solve things. Probably I can improve more but since I understand the process and further improvements never ends, I'm going to keep it as it is."
+                    }
+                }
+            }
+        }
+        13 => {
+            rsx! {
+                div {
+                    class:"project",
+                    h1 {"OS"}
+                    h5 {"Operating System written in Rust."}
+                    Link {id: "github_link_in_project_page", to: "https://github.com/Tahinli/os", "GitHub"}
+                    div {
+                    "
+                        In this project I wanted to implement an basic operating system.
+                    "
+                    }
+                    h3 {"Why I did this ?"}
+                    div {
+                        "I've wanted to learn how to create basic bootable operating system that does very less thing."
+                    }
+
+                    h3 {"What I learned ?"}
+                    div {
+                    "
+                        Basic interactions with hardware. Printing text into screen. Simple boot mechanism. Defining new architectures that doesn't exist for Rust since our operating system is belong to us and more. I've followed this tutorial: https://os.phil-opp.com. Thanks a lot for this tutorial, I'm sending my best regards.
+                    "
                     }
                 }
             }
