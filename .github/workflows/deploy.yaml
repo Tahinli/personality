@@ -1,20 +1,183 @@
+name: Deploy
+
 on:
   push:
     branches:
       - main
 
+# The deploy swaps the served directory; two of them racing would leave the
+# server with pieces of different builds.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  # The dx CLI is compiled once per version and cached on that version; bump
+  # here to move the site to a newer toolchain, nowhere on the server.
+  DX: 0.7.10
+  # The site lives in this subdirectory of the SSH user's home. The home
+  # itself is resolved on the server ($HOME), so switching the deploy user
+  # moves the site with it and there is no path secret to go stale. The web
+  # server's root must point at $HOME/personality.
+  SITE_DIR: personality
+  # Where the deployed site is checked after the swap. Set the repository
+  # variable SITE_URL to override.
+  SITE_URL: ${{ vars.SITE_URL || 'https://tahinli.com' }}
+
 jobs:
-  pull:
+  deploy:
     name: Deploy
-    runs-on: ubuntu-latest
+    # Pinned, not `latest`: the output is wasm and platform-independent, but a
+    # runner image moving under the cache silently discards it.
+    runs-on: ubuntu-24.04
     steps:
-      - name: Install SSH Keys
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        run: rustup toolchain install stable --profile minimal --target wasm32-unknown-unknown
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-all-crates: true
+          # Bump when the target, the profile or any rustflags change: the key
+          # does not otherwise see those, and a run restoring the old key
+          # reports it up-to-date at save time, discarding the recompiled
+          # dependencies.
+          prefix-key: v1-rust-wasm
+
+      # Compiling the CLI from source costs many minutes and it changes only
+      # when the pinned version does, so it is cached on that version alone.
+      - name: Cache the dx CLI
+        id: dx-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/dx
+          key: dx-cli-${{ env.DX }}-${{ runner.os }}
+
+      - name: Install cargo-binstall
+        if: steps.dx-cache.outputs.cache-hit != 'true'
+        uses: cargo-bins/cargo-binstall@main
+
+      - name: Install the dx CLI
+        # binstall fetches the prebuilt release binary and only compiles from
+        # source when there is none for this version.
+        if: steps.dx-cache.outputs.cache-hit != 'true'
+        run: cargo binstall dioxus-cli@${{ env.DX }} --no-confirm --locked
+
+      - name: Build the site
+        run: |
+          set -euo pipefail
+          # The public dir survives in the restored cache and keeps every
+          # earlier build's hashed assets; only this build's may ship.
+          rm -rf "target/dx/$SITE_DIR"
+          # wasm-opt needs the debuginfo stripped first (wasm-release profile
+          # in Cargo.toml), otherwise it aborts and dx ships the fat wasm.
+          dx build --release --platform web
+          public="target/dx/$SITE_DIR/release/web/public"
+          test -f "$public/index.html"
+          rm -rf stage
+          cp -r "$public" stage
+          ls -lR stage
+
+      - name: Install SSH keys
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
-      - name: Connect and Pull
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "export PATH="${{ secrets.CARGO_PATH }}:$PATH" && cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull --rebase && dx build --release && cp -r ${{ secrets.ARTIFACT_DIR }} ${{ secrets.DEPLOY_PATH }} && rm -rf ${{ secrets.DEPLOY_PATH }}/personality && mv ${{ secrets.DEPLOY_PATH }}/public ${{ secrets.DEPLOY_PATH }}/personality"
+
+      - name: Upload the release
+        run: |
+          set -euo pipefail
+          ssh_target="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+
+          # The server's login shell may not be bash, and ssh would hand this
+          # script to it; `bash -s` takes it on stdin instead, so the login
+          # shell only ever parses one plain command.
+          ssh "$ssh_target" "bash -se -- '$SITE_DIR'" <<'REMOTE'
+          set -euo pipefail
+          case "$1" in
+            ''|/*|*..*)
+              echo "Refusing a broad site subdirectory: '$1'" >&2
+              exit 1
+              ;;
+          esac
+          site=$HOME/$1
+          rm -rf -- "$site.new"
+          mkdir -p -- "$site.new"
+          REMOTE
+          # stdin carries the tarball, so the script cannot; the extraction
+          # still goes through bash -c because a fish login shell would not
+          # expand $HOME.
+          tar -C stage -czf - . | ssh "$ssh_target" "bash -c 'exec tar -xzf - -C \"\$HOME/\$1.new\"' -- '$SITE_DIR'"
+
+      - name: Swap
+        id: swap
+        run: |
+          set -euo pipefail
+          ssh_target="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+          ssh "$ssh_target" "bash -se -- '$SITE_DIR'" <<'REMOTE'
+          set -euo pipefail
+          site=$HOME/$1
+          rm -rf -- "$site.previous"
+          if [ -e "$site" ]; then
+            mv -- "$site" "$site.previous"
+          fi
+          mv -- "$site.new" "$site"
+          REMOTE
+
+      # The independent after-the-fact check: the live page must reference
+      # the script this deploy staged, and that script must answer with
+      # byte-identical content. Hashed asset names cannot be served stale by
+      # a cache, so a mismatch means the swap did not land.
+      - name: Verify the served site is this deploy's
+        run: |
+          set -euo pipefail
+          js=$(grep -oE 'personality-dxh[a-f0-9]+\.js' stage/index.html | head -n1)
+          test -n "$js"
+          test -f "stage/assets/$js"
+          staged=$(sha256sum "stage/assets/$js" | cut -d' ' -f1)
+          for _ in $(seq 1 30); do
+            if curl -fsS -H 'Cache-Control: no-cache' "$SITE_URL/" | grep -q "$js"; then
+              served=$(curl -fsS "$SITE_URL/assets/$js" | sha256sum | cut -d' ' -f1)
+              echo "staged sha256:$staged, served sha256:$served"
+              test "$staged" = "$served"
+              echo "$SITE_DIR is up"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "$SITE_URL does not serve $js" >&2
+          exit 1
+
+      - name: Roll back
+        if: failure() && steps.swap.conclusion == 'success'
+        run: |
+          set -euo pipefail
+          ssh_target="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+          ssh "$ssh_target" "bash -se -- '$SITE_DIR'" <<'REMOTE'
+          set -euo pipefail
+          site=$HOME/$1
+          if [ ! -e "$site.previous" ]; then
+            echo 'nothing to roll back to' >&2
+            exit 0
+          fi
+          rm -rf -- "$site.rolledback"
+          mv -- "$site" "$site.rolledback"
+          mv -- "$site.previous" "$site"
+          rm -rf -- "$site.rolledback"
+          echo 'rolled back to the previous release'
+          REMOTE
+
+      - name: Drop the previous release
+        run: |
+          set -euo pipefail
+          ssh "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "bash -se -- '$SITE_DIR'" <<'REMOTE'
+          set -euo pipefail
+          rm -rf -- "$HOME/$1.previous"
+          REMOTE
 
       - name: Cleaning
+        if: always()
         run: rm -rf ~/.ssh

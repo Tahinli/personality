@@ -8,7 +8,7 @@ edition = "2021"
 
 [dependencies]
 
-dioxus = { version = "0.7.3", features = ["web", "router"] }
+dioxus = { version = "0.7.10", features = ["web", "router"] }
 
 
 [profile]
@@ -22,3 +22,7 @@ inherits = "dev"
 
 [profile.android-dev]
 inherits = "dev"
+
+[profile.wasm-release]
+inherits = "release"
+strip = "debuginfo"
